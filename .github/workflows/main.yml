@@ -1,20 +1,16 @@
-name: Hello-World-Actions
+name: Super-Linter
 
 on:
-  push:
-    branches: [main]
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+ push:
+  branches: [master]
 
 jobs:
-  say_hello:
-    # The type of runner that the job will run on
+  super-lint:
+    name: Lint code base
     runs-on: ubuntu-latest
     steps:
-      - name: Say Hello
-        run: echo Hello World!
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Say Goodbye
-        run: |
-          echo Job Finished.
-          echo Goodbye!
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
